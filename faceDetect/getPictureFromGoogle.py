@@ -54,8 +54,9 @@ def all_links(page):
             break
         else:
             links.append(link)      #Append all the links in the list named 'Links'
-            #time.sleep(0.1)        #Timer could be used to slow down the request for image downloads
+            time.sleep(0.1)        #Timer could be used to slow down the request for image downloads
             page = page[end_content:]
+           # print links
     return links
 
 def download_images(links, search_keyword):
@@ -96,9 +97,10 @@ def search():
     search_keyword = search_keyword.replace(" ","%20")
     url = 'https://www.google.com/search?q=' + search_keyword+ '&espv=2&biw=1366&bih=667&site=webhp&source=lnms&tbm=isch&sa=X&ei=XosDVaCXD8TasATItgE&ved=0CAcQ_AUoAg'
     raw_html =  (get_raw_html(url))
+  
     links = links + (all_links(raw_html))
     print ("Total Image Links = "+str(len(links)))
-    print ("\n")
+    #print links
 
     download_images(links, search_keyword)
 
