@@ -14,7 +14,7 @@ def dowmloadPic(html,keyword):
         except requests.exceptions.ConnectionError:
             print '【错误】当前图片无法下载'
             continue
-        string = str(i) + '.jpg'
+        string = './data/boss/' + str(i) + '.jpg'
         #resolve the problem of encode, make sure that chinese name could be store
         fp = open(string.decode('utf-8').encode('cp936'),'wb')
         fp.write(pic.content)
